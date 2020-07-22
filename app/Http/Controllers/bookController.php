@@ -195,4 +195,17 @@ class bookController extends Controller
 
         return $rules;
     }
+
+     // libraryCategory  to book
+     public function libraryCategory($id){
+        try {
+            $Book = Book::findOrFail($id);
+            // $BooksLibrary = $Book->category()->name;
+            $Bookscategory = $Book->library()->name;
+            return response()->json(['status' => '200' , 'message'=> $Bookscategory ]);
+        } catch (\Throwable $th) {
+            return response()->json(['status' => '404' , 'message'=> 'Not Found']);
+        }
+     
+    }
 }

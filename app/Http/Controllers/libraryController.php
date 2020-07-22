@@ -186,4 +186,16 @@ class libraryController extends Controller
 
         return $rules;
     }
+
+    // Libraries Count 
+    public function libraryCount($id){
+        try {
+            $library = Library::findOrFail($id);
+            $librarycont = $library->book()->count();
+            return response()->json(['status' => '200' , 'message'=> $librarycont]);
+        } catch (\Throwable $th) {
+            return response()->json(['status' => '404' , 'message'=> 'Not Found']);
+        }
+     
+    }
 }

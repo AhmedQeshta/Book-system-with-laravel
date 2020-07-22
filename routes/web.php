@@ -26,7 +26,8 @@ Route::group(['prefix' => 'category'], function () {
     Route::get('edit/{id}','categoryController@edit')->name('category.edit');
     Route::put('update/{slug}','categoryController@update')->name('category.update');
     Route::get('destroy/{id?}','categoryController@destroy')->name('category.destroy');
-    // Route::get('/show/{id}','categoryController@show')->name('category.show');     
+    // ajax response
+    Route::post('book/count/{id?}','categoryController@bookCount')->name('category.book.count');  
 });
 
 // new Libraries
@@ -37,7 +38,8 @@ Route::group(['prefix' => 'library'], function () {
     Route::get('edit/{id}','libraryController@edit')->name('library.edit');
     Route::put('update/{slug}','libraryController@update')->name('library.update');
     Route::get('destroy/{id?}','libraryController@destroy')->name('library.destroy');
-    // Route::get('/show/{id}','libraryController@show')->name('library.show');     
+    // ajax response
+    Route::post('library/count/{id?}','libraryController@libraryCount')->name('library.book.count');
 });
 
 // new Libraries
@@ -47,8 +49,7 @@ Route::group(['prefix' => 'book' ], function () {
     Route::post('store','bookController@store')->name('book.store');
     Route::get('edit/{id}','bookController@edit')->name('book.edit');
     Route::put('update/{slug}','bookController@update')->name('book.update');
-    Route::get('destroy/{id?}','bookController@destroy')->name('book.destroy');
-    // Route::get('/show/{id}','bookController@show')->name('book.show');     
+    Route::get('destroy/{id?}','bookController@destroy')->name('book.destroy');  
 });
 
 Route::get('local/{lang?}', 'localizationController@change')->name('local.change');

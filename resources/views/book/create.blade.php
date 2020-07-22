@@ -25,7 +25,7 @@
                         <div class="text-center">
                             <span class="btn default btn-file">
                                 <span class="fileinput-new">{{__('book.selecteimageCreatebook')}}</span>
-                                <span class="fileinput-exists">{{__('book.ChangeImageCreatebook')}}<</span>
+                                <span class="fileinput-exists">{{__('book.ChangeImageCreatebook')}}</span>
                                 {{-- <input type="hidden"  value="" name="..."> --}}
                                 <input type="file"  class="@error('book_image') is-invalid @enderror" value="{{ old('book_image') }}"  name="book_image"></span>
                             <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput">{{__('book.RemoveImageCreatebook')}}</a>

@@ -58,7 +58,7 @@
                                             <i class="fa fa-edit"></i>
                                         </span>{{__('category.Edit')}} 
                                     </a>
-                                    <a class="btn btn-warning " href="#">
+                                    <a class="btn btn-warning book-number" data-value="{{$category->id}}">
                                         <span>
                                             <i class="fa fa-eye"></i>
                                         </span>{{__('category.Show')}}  
@@ -106,5 +106,21 @@
             }); 
         });
         
+
+        $('.book-number').click(function(){
+            var id = $(this).data('value');
+            $.ajax({
+                url : '{{route('category.book.count')}}/' + id,
+                method: 'POST',
+                data: {
+                    body:'',
+                    _token:'{{csrf_token()}}'
+                    }
+            }).success(function(response){
+                if (response.status=='200') {
+                    swal('Books number is ' + response.message , ); 
+                }
+            })
+        });
     </script>
 @endsection

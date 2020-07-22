@@ -63,11 +63,6 @@
                                             <i class="fa fa-edit"></i>
                                         </span> {{__('book.Edit')}}
                                     </a>
-                                    <a class="btn btn-warning " href="#">
-                                        <span>
-                                            <i class="fa fa-eye"></i>
-                                        </span> {{__('book.Show')}}
-                                    </a>
                                     {{-- href="{{route('book.destroy',$book->id)}}" --}}
                                     <a class="btn btn-danger remove-book" data-value="{{$book->id}}" >
                                             <span>
@@ -109,6 +104,7 @@
                 // swal("Deleted!", "Your imaginary file has been deleted.", "success");
             }); 
         });
+        
         
     </script>
 @endsection

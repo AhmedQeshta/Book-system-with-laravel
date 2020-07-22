@@ -3,7 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Book;
+use App\User;
 class Library extends Model
 {
      /**
@@ -14,4 +15,8 @@ class Library extends Model
     protected $fillable = [
         'name', 'image', 'email','phone','password','slug' 
     ];
+
+    public function book(){
+        return $this->hasMany(Book::class , 'library_id' ,'id');
+    }
 }

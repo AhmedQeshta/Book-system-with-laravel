@@ -194,6 +194,18 @@ class categoryController extends Controller
                         // ->with('success',"category { $oldName } deleted successfully");
     }
 
+    // Books Count 
+    public function bookCount($id){
+        try {
+            $category = Category::findOrFail($id);
+            $bookcont = $category->books()->count();
+            return response()->json(['status' => '200' , 'message'=> $bookcont]);
+        } catch (\Throwable $th) {
+            return response()->json(['status' => '404' , 'message'=> 'Not Found']);
+        }
+     
+    }
+
 
     // method to help 
     private function rules($slug= null){

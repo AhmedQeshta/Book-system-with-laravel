@@ -51,7 +51,7 @@
                                             <i class="fa fa-edit"></i>
                                         </span> {{__('library.Edit')}}
                                     </a>
-                                    <a class="btn btn-warning " href="#">
+                                    <a class="btn btn-warning library-number" data-value="{{$library->id}}">
                                         <span>
                                             <i class="fa fa-eye"></i>
                                         </span> {{__('library.Show')}}
@@ -98,5 +98,21 @@
             }); 
         });
         
+// ajax response
+        $('.library-number').click(function(){
+            var id = $(this).data('value');
+            $.ajax({
+                url : '{{route('library.book.count')}}/' + id,
+                method: 'POST',
+                data: {
+                    body:'',
+                    _token:'{{csrf_token()}}'
+                    }
+            }).success(function(response){
+                if (response.status=='200') {
+                    swal('Books number is ' + response.message , ); 
+                }
+            })
+        });
     </script>
 @endsection

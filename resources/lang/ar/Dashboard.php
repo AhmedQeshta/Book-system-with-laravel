@@ -5,5 +5,7 @@
             'titleDashboard' =>' اللوحة الرئيسية | الرئيسية ',
         // index page
             'Dashboard' => 'لوحة القيادة',
-            'Features' => 'مميزات',     
+            'Features' => 'مميزات',    
+            
+            'Youareloggedin' => 'تم تسجيل الدخول',    
     ];

@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('Dashboard.Youareloggedin') }}
+                    {{ __('Dashboard.Youareloggedin') }} Admin
                 </div>
             </div>
         </div>

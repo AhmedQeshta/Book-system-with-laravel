@@ -5,5 +5,8 @@
             'titleDashboard' =>'Dashboard | Home',
         // index page
             'Dashboard' => 'Dashboard',
-            'Features' => 'Features',     
+            'Features' => 'Features',  
+            
+            'Youareloggedin' => 'You are logged in',    
+
     ];

@@ -19,7 +19,7 @@ Route::get('/test', function () {return view('test');})->name('test');
 
 
 // new category
-Route::group(['prefix' => 'category'], function () {
+Route::group(['prefix' => 'category' , 'middleware'=>['auth']], function () {
     Route::get('/','categoryController@index')->name('category.index');
     Route::get('create','categoryController@create')->name('category.create');
     Route::post('store','categoryController@store')->name('category.store');

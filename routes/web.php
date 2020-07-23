@@ -57,4 +57,10 @@ Route::get('local/{lang?}', 'localizationController@change')->name('local.change
 // auth
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin', 'adminController@index')->name('admin');
+
+// new Libraries
+Route::group(['prefix' => 'admin' ], function () {
+    Route::get('/', 'adminController@index')->name('admin.dashboard');
+    Route::get('login', 'Auth\adminLoginController@showLoginForm')->name('admin.login');
+    Route::post('login', 'Auth\adminLoginController@login')->name('admin.login.submit');    
+});

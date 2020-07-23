@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard.Dashboard') }}</div>
+                <div class="card-header">{{ __('Dashboard.Dashboard') }} , Admin</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('Dashboard.Youareloggedin') }} Admin
+                    {{ __('Dashboard.Youareloggedin') }}  , Admin
                 </div>
             </div>
         </div>

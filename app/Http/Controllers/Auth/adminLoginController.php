@@ -5,10 +5,12 @@ namespace App\Http\Controllers\auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class adminLoginController extends Controller
 {
 
+  use AuthenticatesUsers;
        /**
      * Create a new controller instance.
      *
@@ -41,7 +43,7 @@ class adminLoginController extends Controller
       return redirect()->back()->withInput($request->only('email', 'remember'));
     }
 
-    public function logout (){
+    public function logout(){
         Auth::guard('admin')->logout();
         return redirect('/');
     }

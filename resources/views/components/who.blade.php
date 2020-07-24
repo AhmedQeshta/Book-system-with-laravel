@@ -18,6 +18,18 @@
     </p>
 @endif
 
+@if(Auth::guard('library')->check())
+    <p class="text-success">
+        You are logged in as a <strong>library</strong>
+    </p>
+@else
+    <p class="text-danger">
+        You are logged out as a <strong>library</strong>
+    </p>
+@endif
+
+
+
 
 
 

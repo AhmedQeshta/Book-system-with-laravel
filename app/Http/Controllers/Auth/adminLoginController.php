@@ -18,7 +18,8 @@ class adminLoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:admin')->except('logout');
+      $this->middleware('guest:library')->except('logout');
+      $this->middleware('guest:admin')->except('logout');
     }
 
 
@@ -26,6 +27,8 @@ class adminLoginController extends Controller
         return view('auth.admin-login');
     }
 
+
+      // this function to login as admin 
     public function login(Request $request){
         // Validate the form data
       $this->validate($request, [
@@ -36,6 +39,8 @@ class adminLoginController extends Controller
       // Attempt to log the user in
       if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
         // if successful, then redirect to their intended location
+        return redirect()->intended(route('admin.dashboard'));
+      }elseif(Auth::guard('library')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
         return redirect()->intended(route('admin.dashboard'));
       }
 

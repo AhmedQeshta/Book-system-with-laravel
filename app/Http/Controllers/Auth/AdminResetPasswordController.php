@@ -25,10 +25,17 @@ class AdminResetPasswordController extends Controller
      *
      * @return void
      */
+        /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
-        $this->middleware('guest:admin');
+      $this->middleware('guest:library');
+      $this->middleware('guest:admin');
     }
+
 
     protected function guard()
     {

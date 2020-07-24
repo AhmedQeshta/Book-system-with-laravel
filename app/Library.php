@@ -5,7 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Book;
 use App\User;
-class Library extends Model
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Notifications\Notifiable;
+use App\Notifications\AdminResetPasswordNotification;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+class Library extends Authenticatable
 {
      /**
      * The attributes that are mass assignable.

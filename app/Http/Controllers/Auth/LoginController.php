@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -39,9 +40,47 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout','userlogout');
     }
 
-    public function userlogout(){
-        Auth::guard('web')->logout();
-        return redirect('/');
+    // public function userlogout(){
+    //     Auth::guard('web')->logout();
+    //     return redirect('/');
+    // }
+
+
+    // this function to login as user 
+    protected function attemptLogin(Request $request)
+    {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+            return redirect()->intended(route('home'));
+        } 
+        // elseif(Auth::guard('library')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+        //     return redirect()->intended(route('home'));
+        // }
+        return false;
+        
     }
 
+    protected function logout(Request $request)
+    {
+        
+        if(Auth::guard('library')->check()) {
+
+            // dd(Auth::guard('library'));
+            Auth::guard('library')->logout();
+
+        }
+        if(Auth::guard('admin')->check()) {
+
+            // dd(Auth::guard('admin'));
+            Auth::guard('admin')->logout();
+
+        }
+        if (Auth::guard('web')->check()) {
+
+            // dd(Auth::guard('web'));
+            Auth::guard('web')->logout();
+
+        } 
+        return redirect()->route('login');
+        
+    }
 }

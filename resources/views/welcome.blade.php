@@ -164,7 +164,7 @@
             @endif
             <div class="top-left links">
                 <img src="http://nick.mtvnimages.com/nick/nick-web/error/404-sb-web.png?width=250&quality=0.6" alt="404 Page not Found">
-                <a href="{{route('test')}}">category</a>
+                <a href="{{route('category.index')}}">category</a>
             </div>
         
     <div class="contaner">

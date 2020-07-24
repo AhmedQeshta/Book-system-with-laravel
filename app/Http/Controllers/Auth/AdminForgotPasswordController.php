@@ -11,6 +11,7 @@ class AdminForgotPasswordController extends Controller
 {
     use SendsPasswordResetEmails;
 
+
     /**
      * Create a new controller instance.
      *
@@ -18,8 +19,9 @@ class AdminForgotPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:admin');
+      $this->middleware('guest:admin');
     }
+
 
     protected function broker()
     {

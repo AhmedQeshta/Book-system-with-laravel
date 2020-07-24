@@ -149,19 +149,19 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+                @if (Route::has('login'))
+                    <div class="top-right links">
+                        @auth
+                            <a href="{{ url('/home') }}">Home</a>
+                        @else
+                            <a href="{{ route('login') }}">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}">Register</a>
+                            @endif
+                        @endauth
+                    </div>
+                @endif
             <div class="top-left links">
                 <img src="http://nick.mtvnimages.com/nick/nick-web/error/404-sb-web.png?width=250&quality=0.6" alt="404 Page not Found">
                 <a href="{{route('test')}}">category</a>
@@ -170,12 +170,7 @@
     <div class="contaner">
         <img src="http://nick.mtvnimages.com/nick/nick-web/error/404-sb-web.png?width=250&quality=0.6" alt="404 Page not Found">
         <div class="row">
-            <h1>WellCome to Web site , Author</h1>
-        </div>
-        <div class="panel">
-            @component('components.who')
-
-            @endcomponent
+            <h1>WellCome to Web site, user Page</h1>
         </div>
     </div>
 </div>

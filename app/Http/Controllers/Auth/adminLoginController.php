@@ -16,14 +16,14 @@ class adminLoginController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('guest')->except('logout');
-        $this->middleware('guest:admin');
+        $this->middleware('guest:admin')->except('logout');
     }
 
 
     public function showLoginForm(){
         return view('auth.admin-login');
     }
+
     public function login(Request $request){
         // Validate the form data
       $this->validate($request, [
@@ -41,5 +41,9 @@ class adminLoginController extends Controller
       return redirect()->back()->withInput($request->only('email', 'remember'));
     }
 
+    public function logout (){
+        Auth::guard('admin')->logout();
+        return redirect('/');
+    }
 
 }

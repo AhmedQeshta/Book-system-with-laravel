@@ -14,7 +14,11 @@
                         </div>
                     @endif
 
-                    {{ __('Dashboard.Youareloggedin') }}  , Admin
+                    <div class="panel">
+                        @component('components.who')
+        
+                        @endcomponent
+                    </div>
                 </div>
             </div>
         </div>

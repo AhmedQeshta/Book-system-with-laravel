@@ -54,13 +54,27 @@ Route::group(['prefix' => 'book' , 'middleware'=>['auth:admin'] ], function () {
 
 Route::get('local/{lang?}', 'localizationController@change')->name('local.change')->middleware('auth:admin');
 
+
 // auth
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+
+// last mult auth 
+Route::group(['prefix' => 'home' ], function () {
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('user', 'userController@index')->name('user');
+    Route::get('logout', 'Auth\LoginController@userlogout')->name('user.logout');
+});
 
 // new Libraries
 Route::group(['prefix' => 'admin' ], function () {
     Route::get('/', 'adminController@index')->name('admin.dashboard');
     Route::get('login', 'Auth\adminLoginController@showLoginForm')->name('admin.login');
     Route::post('login', 'Auth\adminLoginController@login')->name('admin.login.submit');    
+    Route::post('logout', 'Auth\adminLoginController@logout')->name('admin.logout'); 
+  
+    // Password reset routes
+    Route::post('password/email', 'Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+    Route::get('password/reset', 'Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+    Route::post('password/reset', 'Auth\AdminResetPasswordController@reset');
+    Route::get('password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
 });

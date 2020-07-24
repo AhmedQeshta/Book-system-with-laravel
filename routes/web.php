@@ -70,7 +70,7 @@ Route::group(['prefix' => 'admin' ], function () {
     Route::get('/', 'adminController@index')->name('admin.dashboard');
     Route::get('login', 'Auth\adminLoginController@showLoginForm')->name('admin.login');
     Route::post('login', 'Auth\adminLoginController@login')->name('admin.login.submit');    
-    Route::post('logout', 'Auth\adminLoginController@logout')->name('admin.logout'); 
+    Route::get('logout', 'Auth\adminLoginController@logout')->name('admin.logout'); 
   
     // Password reset routes
     Route::post('password/email', 'Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');

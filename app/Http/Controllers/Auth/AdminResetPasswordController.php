@@ -5,6 +5,7 @@ namespace App\Http\Controllers\auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use App\Providers\RouteServiceProvider;
 use Password;
 use Auth;
 
@@ -12,12 +13,12 @@ class AdminResetPasswordController extends Controller
 {
     use ResetsPasswords;
 
-    /**
-     * Where to redirect users after resetting their password.
+     /**
+     * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected $redirectTo = RouteServiceProvider::ADMIN;
 
     /**
      * Create a new controller instance.

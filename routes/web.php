@@ -84,3 +84,6 @@ Route::group(['prefix' => 'admin' ], function () {
 
 // log out 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
+// fire base 
+Route::get('puch/firebase','FireBaseController@puch')->name('firebase.puch');

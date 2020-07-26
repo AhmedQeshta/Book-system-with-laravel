@@ -17,16 +17,29 @@
             <h3 class="panel-title"><strong> <i class="fa fa-map"></i> {{__('map.Map')}}</strong></h3>
         </div>
         <div class="panel-body"> 
-            <form action="">
+            <form action="{{route('mapLocation.store')}}" method="POST">
+                @csrf
                 <div class="form-group col col-md-4" >
                     <label for="lat">LAT : </label>
-                    <input type="text" name='lat' id="lat" placeholder="Lat" style="width: 90%">
+                    <input required class="@error('lat') is-invalid @enderror" type="text" name='lat' id="lat" placeholder="Lat" style="width: 90%">
+                    @error('lat')
+                        <div class="invalid-feedback alert-danger text-center" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @enderror
                 </div>
                 <div class="form-group col col-md-4" >
                     <label for="lat">LNG : </label>
-                    <input type="text" name='lng' id="lng" placeholder="Lng" style="width: 90%">
+                    <input required class="@error('lng') is-invalid @enderror" type="text" name='lng' id="lng" placeholder="Lng" style="width: 90%">
+                    @error('lng')
+                        <div class="invalid-feedback alert-danger text-center" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @enderror
                 </div>
-               
+                <div class="form-group col col-md-4" >
+                   <button name="submit" type="submit">Save</button>
+                </div>
             </form>
             <br>
             <div id="map"></div>

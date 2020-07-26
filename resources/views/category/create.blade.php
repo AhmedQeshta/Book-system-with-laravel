@@ -12,10 +12,10 @@
                         <div class="fileinput-new thumbnail" style="width: 300px; height: 250px;">
                             <img src="http://www.placehold.it/300x250" alt=""> </div>
                             @error('image')
-                            <div class="invalid-feedback alert-danger text-center" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </div>
-                    @enderror
+                                <div class="invalid-feedback alert-danger text-center" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </div>
+                            @enderror
                         <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 250px; line-height: 10px;"></div>
                         <div class="text-center">
                             <span class="btn default btn-file">

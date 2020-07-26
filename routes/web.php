@@ -86,7 +86,11 @@ Route::group(['prefix' => 'admin' ], function () {
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 // Map in my project
-Route::get('map', 'MapController@showMap')->name('map');
+Route::group(['prefix' => 'map' ], function () {
+    Route::get('/', 'MapController@showMap')->name('map');
+    Route::post('/store','MapController@store')->name('mapLocation.store');
+});
+
 
 // fire base 
 // Route::get('puch/firebase','FireBaseController@puch')->name('firebase.puch');

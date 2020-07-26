@@ -2,6 +2,7 @@
 <html lang="{{app()->getLocale()}}" dir="{{app()->getLocale()== 'ar' ? 'rtl' : 'ltr'}}" >
 <head>
     @includeif('base_layouts.header.meta_header')
+    @yield('style')
 </head>
     <!-- END HEAD -->
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">

@@ -54,7 +54,7 @@ Route::group(['prefix' => 'book' , 'middleware'=>['auth:admin'] ], function () {
     Route::get('destroy/{id?}','bookController@destroy')->name('book.destroy');  
 });
 
-Route::get('local/{lang?}', 'localizationController@change')->name('local.change')->middleware('auth:admin');
+Route::get('local/{lang?}', 'localizationController@change')->name('local.change');
 
 
 // auth
@@ -85,5 +85,8 @@ Route::group(['prefix' => 'admin' ], function () {
 // log out 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
+// Map in my project
+Route::get('map', 'MapController@showMap')->name('map');
+
 // fire base 
-Route::get('puch/firebase','FireBaseController@puch')->name('firebase.puch');
+// Route::get('puch/firebase','FireBaseController@puch')->name('firebase.puch');

@@ -91,6 +91,10 @@ Route::group(['prefix' => 'map' ], function () {
     Route::post('/store','MapController@store')->name('mapLocation.store');
 });
 
+// Map in my project
+Route::group(['prefix' => 'mail' ], function () {
+    Route::get('/send', 'MailController@send')->name('mail.send');
+});
 
 // fire base 
 // Route::get('puch/firebase','FireBaseController@puch')->name('firebase.puch');

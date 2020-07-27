@@ -166,13 +166,26 @@
                 <img src="http://nick.mtvnimages.com/nick/nick-web/error/404-sb-web.png?width=250&quality=0.6" alt="404 Page not Found">
                 <a href="{{route('category.index')}}">category</a>
             </div>
-        
+            
+            <div class="col clo-md-12">
+                @if (session('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('error') }}
+                    </div>
+                @elseif(session('success'))  
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @endif
+           </div>
+           <br>
     <div class="contaner">
         <img src="http://nick.mtvnimages.com/nick/nick-web/error/404-sb-web.png?width=250&quality=0.6" alt="404 Page not Found">
         <div class="row">
             <h1>WellCome to Web site , Author</h1>
         </div>
         <div class="panel">
+       
             @component('components.who')
 
             @endcomponent

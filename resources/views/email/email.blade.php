@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mail</title>
-</head>
-<body>
-     <h1>Welcome  <strong> Mr. {{$Myuser->name}} </strong>, to my site, this is a test mail</h1>
-        <h3>your password : {{$Myuser->password}} </h3>
-    
-    </body>
-</html>
+@component('mail::message')
+## Introduction
+
+The body of your message.
+-Team
+-Ahmed Qeshta
+-Ahmed Qeshta
+@component('mail::button', ['url' => 'https://my1cv.000webhostapp.com/'])
+My CV
+@endcomponent
+
+Thanks,<br>
+{{ config('app.name') }}
+@endcomponent

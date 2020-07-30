@@ -17,7 +17,16 @@ class Library extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'image', 'email','phone','password','slug' 
+        'name', 'image', 'email','phone','password','slug'
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
     ];
 
     public function book(){

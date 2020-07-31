@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
+Route::group(['prefix' => 'user'], function () {
+    Route::post('/store','API\UserController@store')->name('user.store');
+    Route::match(['PUT' , 'PATCH'],'/update/{id}','API\UserController@update')->name('user.update');
+    Route::get('/index','API\UserController@index')->name('user.index');
+    Route::get('/show/{id?}','API\UserController@show')->name('user.show');
+});
 
-Route::post('user','API\UserController@store')->name('user.store');
-Route::match(['PUT' , 'PATCH'],'user/{id}','API\UserController@update')->name('user.update');

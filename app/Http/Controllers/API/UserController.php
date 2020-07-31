@@ -15,6 +15,26 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
 
+    public function index(){
+        try {
+            $users = User::all();
+            return parent::success($users);
+        }catch (ModelNotFoundException $modelNotFoundException){
+            return parent::error('Error');
+        }
+
+    }
+
+    public function show($id){
+        try {
+            $users = User::findOrFail($id);
+            return parent::success($users);
+        }catch (ModelNotFoundException $modelNotFoundException){
+            return parent::error('this user not found');
+        }
+
+    }
+
     public function store(Request $request){
         // validator
         $validation =  Validator::make($request->all() , $this->rules());
@@ -52,7 +72,7 @@ class UserController extends Controller
     private function rules($id = null){
         $rules = [
             'name'=>'required|min:3',
-            'email'=>'required|min:3|unique:users,email'.($id != null ? ','.$id : ''),
+            'email'=>'required|min:3|unique:users,email'.($id != null ? ','.$id : ''),   // to edit or not {if use edit use it}
             'password'=>'required|min:6',
         ];
         if ($id){

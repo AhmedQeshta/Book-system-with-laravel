@@ -20,7 +20,7 @@ class UserController extends Controller
             $users = User::all();
             return parent::success($users);
         }catch (ModelNotFoundException $modelNotFoundException){
-            return parent::error('Error');
+            return parent::error('Error' , 404);
         }
 
     }
@@ -30,7 +30,7 @@ class UserController extends Controller
             $users = User::findOrFail($id);
             return parent::success($users);
         }catch (ModelNotFoundException $modelNotFoundException){
-            return parent::error('this user not found');
+            return parent::error('this user not found',404);
         }
 
     }
@@ -65,6 +65,19 @@ class UserController extends Controller
             return parent::success($user);
         }catch (ModelNotFoundException $modelNotFoundException){
             return parent::error('user NOt Found',404);
+        }
+
+    }
+
+    public function destroy($id){
+        try {
+            $user = User::findOrFail($id);
+            $result = $user->delete();
+            if ($result === true)
+                return parent::success('This user, Deleted successfully');
+            return self::error('something went wrong');
+        }catch (ModelNotFoundException $modelNotFoundException){
+            return parent::error('this user not found',404);
         }
 
     }

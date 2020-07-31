@@ -20,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('user','API\UserController@store')->name('user.store');
+Route::match(['PUT' , 'PATCH'],'user/{id}','API\UserController@update')->name('user.update');
